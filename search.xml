@@ -21,29 +21,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>在Linux上搭建Assetto Corsa服务器</title>
-    <url>/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
-    <content><![CDATA[<p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p>
-<a id="more"></a>
-
-<p>在安装前，请确保有公网IP以及端口的开放</p>
-<p>首先安装SteamCMD来获取AC服务器需要的文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建一个文件夹</span></span><br><span class="line">mkdir steam</span><br><span class="line"><span class="comment">#进入steam文件夹</span></span><br><span class="line"><span class="built_in">cd</span> steam</span><br><span class="line"><span class="comment">#获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="comment">#删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="comment">#如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure>
-
-<p>SteamCMD详情参考官方：<a href="https://developer.valvesoftware.com/wiki/SteamCMD" target="_blank" rel="noopener">VALVE Developer Community</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#登录steam</span></span><br><span class="line">Steam&gt;login &lt;username&gt;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">#登录之后</span></span><br><span class="line">Steam&gt;force_install_dir ./assetto</span><br><span class="line">Steam&gt;app_update 302550</span><br><span class="line">Steam&gt;<span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入assetto文件夹</span></span><br><span class="line"><span class="built_in">cd</span> assetto</span><br><span class="line"><span class="comment">#在assetto文件夹中，可以看到acServer二进制文件以及存放配置的文件夹cfg，在这个文件夹下使用下面的命令即可打开服务器</span></span><br><span class="line">./acServer</span><br></pre></td></tr></table></figure>
-
-<p>你可以直接修改在cfg文件夹下的server_cfg.ini文件来配置服务器，也可以在Windows系统中在可视化的界面下配置完成后导出配置文件，覆盖服务器下的文件</p>
-<p>在Windows下进入..\steam\steamapps\common\assettocorsa\server，运行acServerManager.exe</p>
-<p>在界面下方选择Export即可导出两个配置文件。</p>
-<p>在acServerManager.exe，Settings选项中，勾选Show on Lobby才能在游戏服务器列表中看到（非局域网），这也是需要公网IP以及开放端口的原因。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>利用Hexo搭建个人博客 入门</title>
     <url>/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>​        Hexo安装详情，推荐查看Hexo中文网站：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>，本文大部分内容都参考自Hexo中文网站。本次安装，在Windows10系统下进行。</p>
@@ -103,6 +80,29 @@
 <p>更多命令详情可以查看Hexo中文网站。</p>
 </li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>在Linux上搭建Assetto Corsa服务器</title>
+    <url>/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p>
+<a id="more"></a>
+
+<p>在安装前，请确保有公网IP以及端口的开放</p>
+<p>首先安装SteamCMD来获取AC服务器需要的文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建一个文件夹</span></span><br><span class="line">mkdir steam</span><br><span class="line"><span class="comment">#进入steam文件夹</span></span><br><span class="line"><span class="built_in">cd</span> steam</span><br><span class="line"><span class="comment">#获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="comment">#删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="comment">#如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure>
+
+<p>SteamCMD详情参考官方：<a href="https://developer.valvesoftware.com/wiki/SteamCMD" target="_blank" rel="noopener">VALVE Developer Community</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#登录steam</span></span><br><span class="line">Steam&gt;login &lt;username&gt;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">#登录之后</span></span><br><span class="line">Steam&gt;force_install_dir ./assetto</span><br><span class="line">Steam&gt;app_update 302550</span><br><span class="line">Steam&gt;<span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入assetto文件夹</span></span><br><span class="line"><span class="built_in">cd</span> assetto</span><br><span class="line"><span class="comment">#在assetto文件夹中，可以看到acServer二进制文件以及存放配置的文件夹cfg，在这个文件夹下使用下面的命令即可打开服务器</span></span><br><span class="line">./acServer</span><br></pre></td></tr></table></figure>
+
+<p>你可以直接修改在cfg文件夹下的server_cfg.ini文件来配置服务器，也可以在Windows系统中在可视化的界面下配置完成后导出配置文件，覆盖服务器下的文件</p>
+<p>在Windows下进入..\steam\steamapps\common\assettocorsa\server，运行acServerManager.exe</p>
+<p>在界面下方选择Export即可导出两个配置文件。</p>
+<p>在acServerManager.exe，Settings选项中，勾选Show on Lobby才能在游戏服务器列表中看到（非局域网），这也是需要公网IP以及开放端口的原因。</p>
 ]]></content>
   </entry>
 </search>
