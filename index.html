@@ -89,7 +89,7 @@
         <p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p>
 <p>在安装前，请确保有公网IP以及端口的开放</p>
 <p>首先安装SteamCMD来获取AC服务器需要的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">![export](E:\Save\文档\ACServer\image\export.png)#创建一个文件夹</span><br><span class="line">mkdir steam</span><br><span class="line"><span class="meta">#</span><span class="bash">进入steam文件夹</span></span><br><span class="line">cd steam</span><br><span class="line"><span class="meta">#</span><span class="bash">获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="meta">#</span><span class="bash">如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">创建一个文件夹</span></span><br><span class="line">mkdir steam</span><br><span class="line"><span class="meta">#</span><span class="bash">进入steam文件夹</span></span><br><span class="line">cd steam</span><br><span class="line"><span class="meta">#</span><span class="bash">获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash">删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="meta">#</span><span class="bash">如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure>
 
 <p>SteamCMD详情参考官方</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">登录steam</span></span><br><span class="line"><span class="meta">Steam&gt;</span><span class="bash">login &lt;username&gt;</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="meta">#</span><span class="bash">登录之后</span></span><br><span class="line"><span class="meta">Steam&gt;</span><span class="bash">force_install_dir ./assetto</span></span><br><span class="line"><span class="meta">Steam&gt;</span><span class="bash">app_update 302550</span></span><br><span class="line"><span class="meta">Steam&gt;</span><span class="bash"><span class="built_in">exit</span></span></span><br></pre></td></tr></table></figure>
@@ -106,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck8lhue510001f4tz1exl2f6r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck8li9ur30001aotzc25y25bc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/04/hello-world/" data-id="ck8lhue4q0000f4tzhgq7h3fh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/04/hello-world/" data-id="ck8li9uqx0000aotzfom4bojq" class="article-share-link">Share</a>
       
       
     </footer>
