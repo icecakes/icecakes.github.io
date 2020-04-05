@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>利用Hexo搭建个人博客 入门</title>
-    <url>/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <url>/blog/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>​        Hexo安装详情，推荐查看Hexo中文网站：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>，本文大部分内容都参考自Hexo中文网站。本次安装，在Windows10系统下进行。</p>
 <a id="more"></a>
 
@@ -68,7 +68,7 @@
   </entry>
   <entry>
     <title>在Linux上搭建Assetto Corsa服务器</title>
-    <url>/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <url>/blog/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p>
 <a id="more"></a>
 
