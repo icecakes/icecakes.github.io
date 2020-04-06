@@ -1200,7 +1200,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #2d79ff;
+  background: #cbc4ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1573,13 +1573,11 @@ pre .javascript .function {
 }
 .post-body a {
   color: #fc6423;
-  border-bottom: none;
   border-bottom: 1px solid #fc6423;
 }
 .post-body a:hover {
-  color: #0593d3;
+  color: #fc6423;
   border-bottom: none;
-  border-bottom: 1px solid #0593d3;
 }
 .posts-collapse {
   margin-left: 35px;
