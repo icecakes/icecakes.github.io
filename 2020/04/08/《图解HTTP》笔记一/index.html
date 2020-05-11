@@ -19,23 +19,25 @@
     var CONFIG = {"hostname":"icecakes.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":"ture","scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7">
+  <meta name="description" content="看书，顺便记点笔记。看完一章，发一篇。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Linux上搭建Assetto Corsa服务器">
-<meta property="og:url" content="http://icecakes.github.io/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:title" content="《图解HTTP》笔记一">
+<meta property="og:url" content="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/index.html">
 <meta property="og:site_name" content="ICECAKES NOTES">
-<meta property="og:description" content="本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7">
+<meta property="og:description" content="看书，顺便记点笔记。看完一章，发一篇。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-04T10:39:16.948Z">
-<meta property="article:modified_time" content="2020-04-06T07:36:02.361Z">
+<meta property="og:image" content="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg">
+<meta property="og:image" content="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/2.jpg">
+<meta property="article:published_time" content="2020-04-07T16:03:16.000Z">
+<meta property="article:modified_time" content="2020-04-17T12:11:42.248Z">
 <meta property="article:author" content="icecakes">
-<meta property="article:tag" content="assetto corsa">
-<meta property="article:tag" content="神力科莎">
-<meta property="article:tag" content="服务器">
-<meta property="article:tag" content="acServerManager">
+<meta property="article:tag" content="HTTP">
+<meta property="article:tag" content="读书笔记">
+<meta property="article:tag" content="图解HTTP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg">
 
-<link rel="canonical" href="http://icecakes.github.io/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+<link rel="canonical" href="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/">
 
 
 <script id="page-configurations">
@@ -48,7 +50,7 @@
   };
 </script>
 
-  <title>在Linux上搭建Assetto Corsa服务器 | ICECAKES NOTES</title>
+  <title>《图解HTTP》笔记一 | ICECAKES NOTES</title>
   
 
 
@@ -193,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://icecakes.github.io/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/headimg.jpg">
@@ -206,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在Linux上搭建Assetto Corsa服务器
+          《图解HTTP》笔记一
         </h1>
 
         <div class="post-meta">
@@ -216,14 +218,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-04 18:39:16" itemprop="dateCreated datePublished" datetime="2020-04-04T18:39:16+08:00">2020-04-04</time>
+              <time title="创建时间：2020-04-08 00:03:16" itemprop="dateCreated datePublished" datetime="2020-04-08T00:03:16+08:00">2020-04-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-06 15:36:02" itemprop="dateModified" datetime="2020-04-06T15:36:02+08:00">2020-04-06</time>
+                <time title="修改时间：2020-04-17 20:11:42" itemprop="dateModified" datetime="2020-04-17T20:11:42+08:00">2020-04-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +233,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Game/" itemprop="url" rel="index"><span itemprop="name">Game</span></a>
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
             </span>
 
@@ -246,25 +248,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p>
+        <p>看书，顺便记点笔记。看完一章，发一篇。</p>
 <a id="more"></a>
-
-<p>在安装前，请确保有公网IP以及端口的开放</p>
-<p>首先安装SteamCMD来获取AC服务器需要的文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个文件夹</span></span><br><span class="line">mkdir steam</span><br><span class="line"><span class="comment">#进入steam文件夹</span></span><br><span class="line"><span class="built_in">cd</span> steam</span><br><span class="line"><span class="comment">#获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="comment">#删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="comment">#如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure>
-
-<p>SteamCMD详情参考官方：<a href="https://developer.valvesoftware.com/wiki/SteamCMD" target="_blank" rel="noopener">VALVE Developer Community</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#登录steam</span></span><br><span class="line">Steam&gt;login &lt;username&gt;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">#登录之后</span></span><br><span class="line">Steam&gt;force_install_dir ./assetto</span><br><span class="line">Steam&gt;app_update 302550</span><br><span class="line">Steam&gt;<span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入assetto文件夹</span></span><br><span class="line"><span class="built_in">cd</span> assetto</span><br><span class="line"><span class="comment">#在assetto文件夹中，可以看到acServer二进制文件以及存放配置的文件夹cfg，在这个文件夹下使用下面的命令即可打开服务器</span></span><br><span class="line">./acServer</span><br></pre></td></tr></table></figure>
-
-<p>你可以直接修改在cfg文件夹下的server_cfg.ini文件来配置服务器，也可以在Windows系统中在可视化的界面下配置完成后导出配置文件，覆盖服务器下的文件</p>
-<p>在Windows下进入..\steam\steamapps\common\assettocorsa\server，运行acServerManager.exe</p>
-<p>在界面下方选择Export即可导出两个配置文件。</p>
-<p>在acServerManager.exe，Settings选项中，勾选Show on Lobby才能在游戏服务器列表中看到（非局域网），这也是需要公网IP以及开放端口的原因。</p>
-
+<h2 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h2><h2 id="了解web及网络基础"><a href="#了解web及网络基础" class="headerlink" title="了解web及网络基础"></a>了解web及网络基础</h2><h3 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h3><ol>
+<li>客户端：通过发送请求获取服务器资源的Web浏览器等。</li>
+<li>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</li>
+</ol>
+<h3 id="HTTP的诞生"><a href="#HTTP的诞生" class="headerlink" title="HTTP的诞生"></a>HTTP的诞生</h3><p>三项WWW构建技术：</p>
+<ul>
+<li>把SGML（标准通用标记语言）作为页面的文本标记语言的HTML（超文本标记语言）</li>
+<li>作为文档传递协议的HTTP</li>
+<li>指定文档所在地址的URL（统一资源定位符）</li>
+</ul>
+<h3 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h3><ol>
+<li>通常使用的网络（包括互联网），是在TCP/IP协议族的基础上运作的。HTTP属于它内部的一个子集。</li>
+<li>计算机与网络设备要相互通信，就必须基于相同的方法。不同的硬件、操作系统之 间的通信，就需要一种规则，而这种规则称为协议（protocol）</li>
+<li>TCP/IP不同的说法：<ul>
+<li>是互联网相关联的协议集合起来的总称</li>
+<li>是TCP和IP两种协议</li>
+<li>是在IP协议的通信过程中，使用到的协议族的统称</li>
+</ul>
+</li>
+<li>TCP/IP协议族按层次分别分为四层：<ul>
+<li>应用层：决定了向用户提供应用服务时通信的活动（应用服务：FTP，DNS等，HTTP协议）</li>
+<li>传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。（传输协议：TCP，UDP）</li>
+<li>网络层（网络互连层）：用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</li>
+<li>数据链路层（链路层，网络接口层）：处理连接网络的硬件部分（控制操作系统、硬件的设备驱动、NIC（网络适配器，网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介））。硬件上的范畴均在链路层的作用范围之内</li>
+</ul>
+</li>
+<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg" class="" title="TCP&#x2F;IP通信传输流"></li>
+<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/2.jpg" class="" title="数据信息封装"></li>
+<li>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这种把数据信息包装起来的做法称为封装（encapsulate）。</li>
+</ol>
+<h3 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h3>
     </div>
 
     
@@ -279,7 +295,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://icecakes.github.io/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="在Linux上搭建Assetto Corsa服务器">http://icecakes.github.io/2020/04/04/在Linux上搭建Assetto Corsa服务器/</a>
+    <a href="http://icecakes.github.io/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/" title="《图解HTTP》笔记一">http://icecakes.github.io/2020/04/08/《图解HTTP》笔记一/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -291,13 +307,11 @@
       <footer class="post-footer">
           <div class="post-tags">
               
-              <a href="/tags/assetto-corsa/" rel="tag"><i class="fa fa-tag"></i> assetto corsa</a>
+              <a href="/tags/HTTP/" rel="tag"><i class="fa fa-tag"></i> HTTP</a>
               
-              <a href="/tags/%E7%A5%9E%E5%8A%9B%E7%A7%91%E8%8E%8E/" rel="tag"><i class="fa fa-tag"></i> 神力科莎</a>
+              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 读书笔记</a>
               
-              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 服务器</a>
-              
-              <a href="/tags/acServerManager/" rel="tag"><i class="fa fa-tag"></i> acServerManager</a>
+              <a href="/tags/%E5%9B%BE%E8%A7%A3HTTP/" rel="tag"><i class="fa fa-tag"></i> 图解HTTP</a>
           </div>
 
         
@@ -305,11 +319,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="next" title="利用Hexo搭建个人博客 入门">
-      利用Hexo搭建个人博客 入门 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/06/%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AFCOS/" rel="prev" title="将hexo部署到腾讯COS">
+      <i class="fa fa-chevron-left"></i> 将hexo部署到腾讯COS
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -368,6 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#笔记："><span class="nav-number">1.</span> <span class="nav-text">笔记：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解web及网络基础"><span class="nav-number">2.</span> <span class="nav-text">了解web及网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用HTTP协议访问Web"><span class="nav-number">2.1.</span> <span class="nav-text">使用HTTP协议访问Web</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP的诞生"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP的诞生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络基础TCP-IP"><span class="nav-number">2.3.</span> <span class="nav-text">网络基础TCP&#x2F;IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与HTTP关系密切的协议：IP、TCP和DNS"><span class="nav-number">2.4.</span> <span class="nav-text">与HTTP关系密切的协议：IP、TCP和DNS</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
