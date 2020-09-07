@@ -4,12 +4,8 @@
     <title>《图解HTTP》笔记一</title>
     <url>/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
     <content><![CDATA[<h2 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h2><h2 id="了解web及网络基础"><a href="#了解web及网络基础" class="headerlink" title="了解web及网络基础"></a>了解web及网络基础</h2><h3 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h3><ol>
-<li><p>客户端：通过发送请求获取服务器资源的Web浏览器等。</p>
-</li>
-<li><p>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</p>
-<a id="more"></a>
-
-</li>
+<li>客户端：通过发送请求获取服务器资源的Web浏览器等。   <a id="more"></a></li>
+<li>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</li>
 </ol>
 <h3 id="HTTP的诞生"><a href="#HTTP的诞生" class="headerlink" title="HTTP的诞生"></a>HTTP的诞生</h3><p>三项WWW构建技术：</p>
 <ul>
