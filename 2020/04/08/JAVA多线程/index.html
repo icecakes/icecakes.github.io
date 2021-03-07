@@ -19,22 +19,22 @@
     var CONFIG = {"hostname":"icecakes.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":"ture","scrollpercent":"ture"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"ture","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="多线程  并行与并发的区别  并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。 并行时不同实体的多个事件，并发时同一个实体上的多个事件。 并发编程的目的是充分利用处理器的每一个核   线程与进程的区别  线程是进程的一个实体，是CPU调度和分派的基本单位 一个程序至少一个进程，一个进程至少一个线程   创建线程的几种方式  继承Thread类创建线程类  Thr">
+  <meta name="description" content="多线程  并行与并发的区别  并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。  并行时不同实体的多个事件，并发时同一个实体上的多个事件。  并发编程的目的是充分利用处理器的每一个核">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多线程">
 <meta property="og:url" content="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="ICECAKES NOTES">
-<meta property="og:description" content="多线程  并行与并发的区别  并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。 并行时不同实体的多个事件，并发时同一个实体上的多个事件。 并发编程的目的是充分利用处理器的每一个核   线程与进程的区别  线程是进程的一个实体，是CPU调度和分派的基本单位 一个程序至少一个进程，一个进程至少一个线程   创建线程的几种方式  继承Thread类创建线程类  Thr">
+<meta property="og:description" content="多线程  并行与并发的区别  并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。  并行时不同实体的多个事件，并发时同一个实体上的多个事件。  并发编程的目的是充分利用处理器的每一个核">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/image/Snipaste_2020-02-23_00-01-32.png">
-<meta property="og:image" content="e:%5CSave%5C%E6%96%87%E6%A1%A3%5Cjava%E5%A4%8D%E4%B9%A0%5Cimage%5CSnipaste_2020-02-23_00-54-24.png">
+<meta property="og:image" content="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png">
+<meta property="og:image" content="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/2.png">
 <meta property="article:published_time" content="2020-04-07T16:03:16.000Z">
-<meta property="article:modified_time" content="2020-10-25T09:26:19.258Z">
+<meta property="article:modified_time" content="2021-03-07T10:02:26.935Z">
 <meta property="article:author" content="icecakes">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/image/Snipaste_2020-02-23_00-01-32.png">
+<meta name="twitter:image" content="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png">
 
 <link rel="canonical" href="http://icecakes.github.io/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-25 17:26:19" itemprop="dateModified" datetime="2020-10-25T17:26:19+08:00">2020-10-25</time>
+                <time title="修改时间：2021-03-07 18:02:26" itemprop="dateModified" datetime="2021-03-07T18:02:26+08:00">2021-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,9 +251,13 @@
 <ol>
 <li><p>并行与并发的区别</p>
 <ul>
-<li>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</li>
-<li>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</li>
-<li>并发编程的目的是充分利用处理器的每一个核</li>
+<li><p>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</p>
+</li>
+<li><p>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</p>
+</li>
+<li><p>并发编程的目的是充分利用处理器的每一个核</p>
+<a id="more"></a>
+</li>
 </ul>
 </li>
 <li><p>线程与进程的区别</p>
@@ -314,12 +318,10 @@
 </ul>
 </li>
 <li><p>线程池（需要补充）</p>
-</li>
-</ol>
-   <img src="image\Snipaste_2020-02-23_00-01-32.png" alt="线程池底层原理" style="zoom:75%;" />
+<img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png" class="" title="线程池底层原理">
 
-<p>   在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p>
-<ol start="9">
+<p>在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p>
+</li>
 <li><p>什么是死锁</p>
 <p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象</p>
 </li>
@@ -369,7 +371,7 @@
 <li><p>使用Lock需要用户手动释放锁，如果没有主动释放锁，就会发生死锁现象。</p>
 </li>
 <li><p>使用Lock必须在try{}catch{}中进行，并且将释放锁的操作放在finally块中进行，保证锁一定会被释放，防止死锁的发生。</p>
-<p><img src="E:%5CSave%5C%E6%96%87%E6%A1%A3%5Cjava%E5%A4%8D%E4%B9%A0%5Cimage%5CSnipaste_2020-02-23_00-54-24.png" alt="Lock的使用"></p>
+<img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/2.png" class="" title="Lock的使用">
 </li>
 <li><p>ReentranLock，意思是可重入锁，是唯一实现了Lock接口的类，并且提供了许多的方法。</p>
 </li>

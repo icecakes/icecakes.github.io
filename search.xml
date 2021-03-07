@@ -7,9 +7,13 @@
 <ol>
 <li><p>并行与并发的区别</p>
 <ul>
-<li>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</li>
-<li>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</li>
-<li>并发编程的目的是充分利用处理器的每一个核</li>
+<li><p>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</p>
+</li>
+<li><p>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</p>
+</li>
+<li><p>并发编程的目的是充分利用处理器的每一个核</p>
+<a id="more"></a>
+</li>
 </ul>
 </li>
 <li><p>线程与进程的区别</p>
@@ -70,12 +74,10 @@
 </ul>
 </li>
 <li><p>线程池（需要补充）</p>
-</li>
-</ol>
-   <img src="image\Snipaste_2020-02-23_00-01-32.png" alt="线程池底层原理" style="zoom:75%;" />
+<img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png" class="" title="线程池底层原理">
 
-<p>   在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p>
-<ol start="9">
+<p>在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p>
+</li>
 <li><p>什么是死锁</p>
 <p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象</p>
 </li>
@@ -125,7 +127,7 @@
 <li><p>使用Lock需要用户手动释放锁，如果没有主动释放锁，就会发生死锁现象。</p>
 </li>
 <li><p>使用Lock必须在try{}catch{}中进行，并且将释放锁的操作放在finally块中进行，保证锁一定会被释放，防止死锁的发生。</p>
-<p><img src="E:%5CSave%5C%E6%96%87%E6%A1%A3%5Cjava%E5%A4%8D%E4%B9%A0%5Cimage%5CSnipaste_2020-02-23_00-54-24.png" alt="Lock的使用"></p>
+<img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/2.png" class="" title="Lock的使用">
 </li>
 <li><p>ReentranLock，意思是可重入锁，是唯一实现了Lock接口的类，并且提供了许多的方法。</p>
 </li>
@@ -141,6 +143,67 @@
       <tags>
         <tag>Java</tag>
         <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《图解HTTP》笔记一</title>
+    <url>/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
+    <content><![CDATA[<h2 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h2><h2 id="了解web及网络基础"><a href="#了解web及网络基础" class="headerlink" title="了解web及网络基础"></a>了解web及网络基础</h2><h3 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h3><ol>
+<li>客户端：通过发送请求获取服务器资源的Web浏览器等。   <a id="more"></a></li>
+<li>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</li>
+</ol>
+<h3 id="HTTP的诞生"><a href="#HTTP的诞生" class="headerlink" title="HTTP的诞生"></a>HTTP的诞生</h3><p>三项WWW构建技术：</p>
+<ul>
+<li>把SGML（标准通用标记语言）作为页面的文本标记语言的HTML（超文本标记语言）</li>
+<li>作为文档传递协议的HTTP</li>
+<li>指定文档所在地址的URL（统一资源定位符）</li>
+</ul>
+<h3 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h3><ol>
+<li>通常使用的网络（包括互联网），是在TCP/IP协议族的基础上运作的。HTTP属于它内部的一个子集。</li>
+<li>计算机与网络设备要相互通信，就必须基于相同的方法。不同的硬件、操作系统之 间的通信，就需要一种规则，而这种规则称为协议（protocol）</li>
+<li>TCP/IP不同的说法：<ul>
+<li>是互联网相关联的协议集合起来的总称</li>
+<li>是TCP和IP两种协议</li>
+<li>是在IP协议的通信过程中，使用到的协议族的统称</li>
+</ul>
+</li>
+<li>TCP/IP协议族按层次分别分为四层：<ul>
+<li>应用层：决定了向用户提供应用服务时通信的活动（应用服务：FTP，DNS等，HTTP协议）</li>
+<li>传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。（传输协议：TCP，UDP）</li>
+<li>网络层（网络互连层）：用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</li>
+<li>数据链路层（链路层，网络接口层）：处理连接网络的硬件部分（控制操作系统、硬件的设备驱动、NIC（网络适配器，网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介））。硬件上的范畴均在链路层的作用范围之内</li>
+</ul>
+</li>
+<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg" class="" title="TCP&#x2F;IP通信传输流"></li>
+<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/2.jpg" class="" title="数据信息封装"></li>
+<li>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这种把数据信息包装起来的做法称为封装（encapsulate）。</li>
+</ol>
+<h3 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h3><ol>
+<li>IP（Internet Protocol）网际协议，按层次分，位于网络层。作用是把各种数据包传送给对方，为了保证确实传送到对方那里，需要满足各类条件，其中两个重要的条件是IP地址和MAC地址（Media Access Control Address）。<ul>
+<li>IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址可以和MAC地址进行配对。IP地址可变换，但MAC地址基本不会更改。</li>
+</ul>
+</li>
+<li>ARP协议（Address Resolution Protocol），是一种用以解析地址的协议，根据通行方的IP地址就可以反查出对应的MAC地址。</li>
+<li>按层次分，TCP位于传输层，提供可靠的字节流服务（Byte Stream Service）。将大块数据分割成以报文段（segment）为单位的数据包进行管理。能够把数据准确地传给对方。<ul>
+<li>TCP协议采用了三次握手（three-way handshaking）策略。握手过程中使用了TCP的标志（flag）——SYN（synchronize）和ACK（acknowledge）。</li>
+<li>三次握手过程：发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。最后，发送端在回传一个带ACK标志的数据包，代表“握手”结束。若握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包。</li>
+<li>除了三次握手，TCP协议还有其他各种手段来保证通信的可靠性。</li>
+</ul>
+</li>
+<li>DNS（Domain Name System）服务是和HTTP协议一样位于应用层的协议。它提供域名到IP地址之间的解析服务。DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</li>
+</ol>
+<h3 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h3><ol>
+<li>URI（Uniform Resource Identifier，统一资源标识符）。由某个协议方案表示的资源的定位标识符。协议方案是指访问资源所使用的协议类型名称。标准的URI协议方案有30种左右。采用HTTP协议时，协议方案就是http。</li>
+<li>URL（Uniform Resource Locator，统一资源定位符），常用的网页地址就是URL。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+        <tag>读书笔记</tag>
+        <tag>图解HTTP</tag>
       </tags>
   </entry>
   <entry>
@@ -210,67 +273,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《图解HTTP》笔记一</title>
-    <url>/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
-    <content><![CDATA[<h2 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h2><h2 id="了解web及网络基础"><a href="#了解web及网络基础" class="headerlink" title="了解web及网络基础"></a>了解web及网络基础</h2><h3 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h3><ol>
-<li>客户端：通过发送请求获取服务器资源的Web浏览器等。   <a id="more"></a></li>
-<li>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</li>
-</ol>
-<h3 id="HTTP的诞生"><a href="#HTTP的诞生" class="headerlink" title="HTTP的诞生"></a>HTTP的诞生</h3><p>三项WWW构建技术：</p>
-<ul>
-<li>把SGML（标准通用标记语言）作为页面的文本标记语言的HTML（超文本标记语言）</li>
-<li>作为文档传递协议的HTTP</li>
-<li>指定文档所在地址的URL（统一资源定位符）</li>
-</ul>
-<h3 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h3><ol>
-<li>通常使用的网络（包括互联网），是在TCP/IP协议族的基础上运作的。HTTP属于它内部的一个子集。</li>
-<li>计算机与网络设备要相互通信，就必须基于相同的方法。不同的硬件、操作系统之 间的通信，就需要一种规则，而这种规则称为协议（protocol）</li>
-<li>TCP/IP不同的说法：<ul>
-<li>是互联网相关联的协议集合起来的总称</li>
-<li>是TCP和IP两种协议</li>
-<li>是在IP协议的通信过程中，使用到的协议族的统称</li>
-</ul>
-</li>
-<li>TCP/IP协议族按层次分别分为四层：<ul>
-<li>应用层：决定了向用户提供应用服务时通信的活动（应用服务：FTP，DNS等，HTTP协议）</li>
-<li>传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。（传输协议：TCP，UDP）</li>
-<li>网络层（网络互连层）：用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</li>
-<li>数据链路层（链路层，网络接口层）：处理连接网络的硬件部分（控制操作系统、硬件的设备驱动、NIC（网络适配器，网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介））。硬件上的范畴均在链路层的作用范围之内</li>
-</ul>
-</li>
-<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg" class="" title="TCP&#x2F;IP通信传输流"></li>
-<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/2.jpg" class="" title="数据信息封装"></li>
-<li>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这种把数据信息包装起来的做法称为封装（encapsulate）。</li>
-</ol>
-<h3 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h3><ol>
-<li>IP（Internet Protocol）网际协议，按层次分，位于网络层。作用是把各种数据包传送给对方，为了保证确实传送到对方那里，需要满足各类条件，其中两个重要的条件是IP地址和MAC地址（Media Access Control Address）。<ul>
-<li>IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址可以和MAC地址进行配对。IP地址可变换，但MAC地址基本不会更改。</li>
-</ul>
-</li>
-<li>ARP协议（Address Resolution Protocol），是一种用以解析地址的协议，根据通行方的IP地址就可以反查出对应的MAC地址。</li>
-<li>按层次分，TCP位于传输层，提供可靠的字节流服务（Byte Stream Service）。将大块数据分割成以报文段（segment）为单位的数据包进行管理。能够把数据准确地传给对方。<ul>
-<li>TCP协议采用了三次握手（three-way handshaking）策略。握手过程中使用了TCP的标志（flag）——SYN（synchronize）和ACK（acknowledge）。</li>
-<li>三次握手过程：发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。最后，发送端在回传一个带ACK标志的数据包，代表“握手”结束。若握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包。</li>
-<li>除了三次握手，TCP协议还有其他各种手段来保证通信的可靠性。</li>
-</ul>
-</li>
-<li>DNS（Domain Name System）服务是和HTTP协议一样位于应用层的协议。它提供域名到IP地址之间的解析服务。DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</li>
-</ol>
-<h3 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h3><ol>
-<li>URI（Uniform Resource Identifier，统一资源标识符）。由某个协议方案表示的资源的定位标识符。协议方案是指访问资源所使用的协议类型名称。标准的URI协议方案有30种左右。采用HTTP协议时，协议方案就是http。</li>
-<li>URL（Uniform Resource Locator，统一资源定位符），常用的网页地址就是URL。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>HTTP</tag>
-        <tag>读书笔记</tag>
-        <tag>图解HTTP</tag>
       </tags>
   </entry>
   <entry>

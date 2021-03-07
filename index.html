@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-25 17:26:19" itemprop="dateModified" datetime="2020-10-25T17:26:19+08:00">2020-10-25</time>
+                <time title="修改时间：2021-03-07 18:02:26" itemprop="dateModified" datetime="2021-03-07T18:02:26+08:00">2021-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,134 +242,19 @@
 <ol>
 <li><p>并行与并发的区别</p>
 <ul>
-<li>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</li>
-<li>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</li>
-<li>并发编程的目的是充分利用处理器的每一个核</li>
-</ul>
+<li><p>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</p>
 </li>
-<li><p>线程与进程的区别</p>
-<ul>
-<li>线程是进程的一个实体，是CPU调度和分派的基本单位</li>
-<li>一个程序至少一个进程，一个进程至少一个线程</li>
-</ul>
+<li><p>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</p>
 </li>
-<li><p>创建线程的几种方式</p>
-<ul>
-<li><p>继承Thread类创建线程类</p>
-<ul>
-<li>Thread类实现了Runnable接口，继承Thread类创建线程，本质上也是实现Runnable接口的一个实例。</li>
-<li>定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体</li>
-<li>创建Thread子类的实例，即创建了线程对象</li>
-<li>调用线程对象的start()方法来启动该线程</li>
-<li>使用继承 Thread 类的方式创建多线程时，编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread() 方法，直接使用 this 即可获得当前线程</li>
-</ul>
-</li>
-<li><p>通过Runnable接口创建线程类</p>
-<ul>
-<li>定义接口的实现类，并重写run()方法，该方法时该线程的线程执行体</li>
-<li>调用线程对象的start()方法来启动该线程</li>
-</ul>
-</li>
-<li><p>通过Callable和Future创建线程</p>
-<ul>
-<li>创建该接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值</li>
-<li>使用FutureTask类来包装Callable对象，FutureTask对象封装了call()方法的返回值，用get()方法来获得子线程执行结束后的返回值。</li>
-</ul>
-<p>start()方法用来启动线程，run()方法只是一个普通方法，</p>
-<p>start()方法启动线程将自动调用 run()方法，这是由jvm的内存机制规定的。并且run()方法必须是public访问权限，返回值类型为void。</p>
-</li>
-</ul>
-</li>
-<li><p>Runnable和Callable有什么区别？</p>
-<p>Runnable接口中run()方法返回值是void，通过start()方法只是执行run()方法中的代码</p>
-<p>Callable接口中的call()方法是有返回值的，是一个泛型，和Future，FutureTask配合可以用来获取异步执行的结果</p>
-</li>
-<li><p>线程有哪些状态？</p>
-<p>五种状态，创建，就绪，运行，阻塞，死亡</p>
-<p>​                        |阻塞|</p>
-<p>创建—-》就绪—-》运行—-》死亡</p>
-</li>
-<li><p>sleep()和wait()有什么区别？</p>
-<ul>
-<li><p>sleep()：该方法是线程类(Thread)的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争CPU的执行时间。</p>
-<p>因为sleep()是静态方法，他不能改变对象锁，当一个synchronized块调用了sleep()方法，线程虽然进入休眠，但是对象锁没有被释放，其他线程依然无法访问这个对象。</p>
-</li>
-<li><p>wait()：wait()方法是Object类的方法，当一个线程执行到wait方法时，它就进入到一个和该对象相关的等待池，同时释放对象锁，是的其他的线程能够访问，可以通过notify，notifyAll方法来唤醒等待的线程</p>
-</li>
-</ul>
-</li>
-<li><p>notify()和notifyAll()</p>
-<ul>
-<li>当有线程调用了对象的notifyAll()方法，将会唤醒所有wait线程，notify()方法只随机唤醒一个wait线程，被唤醒的线程将会进入该对象的锁池，锁池中的线程会去竞争该对象锁。</li>
-<li>假若某线程没有竞争到该对象锁，它还会继续留在锁池中，只有线程再次调用wait()方法，它才会重写回到等待池中，而竞争到对象锁的线程则会继续往下执行，直到执行完synchronized代码块，它会释放掉该对象锁，这是锁池中的线程会继续竞争该对象锁</li>
-</ul>
-</li>
-<li><p>线程池（需要补充）</p>
-</li>
-</ol>
-   <img src="image\Snipaste_2020-02-23_00-01-32.png" alt="线程池底层原理" style="zoom:75%;" />
-
-<p>   在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p>
-<ol start="9">
-<li><p>什么是死锁</p>
-<p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象</p>
-</li>
-<li><p>如何防止死锁</p>
-<p>死锁的四个必要条件</p>
-<ul>
-<li>互斥条件</li>
-<li>请求和保持条件</li>
-<li>不可剥夺条件</li>
-<li>环路等待条件</li>
-</ul>
-</li>
-<li><p>synchronized关键字(悲观锁)</p>
-<ol>
-<li><p>修饰一个代码块，synchronized只锁定对象，对于不同的对象，是不同的锁，互不干扰</p>
-</li>
-<li><p>多个线程访问synchronized代码块和非synchronized代码块，当一个线程访问对象的synchronized代码块时，别的线程可以访问非synchronized代码块</p>
-</li>
-<li><p>修饰一个普通方法，修饰范围是整个方法，当这个方法所在的类被继承时，子类相同的方法synchronized不能被继承，需要显式地在子类加上这个方法才行。</p>
-<p>如果子类继承的方法没有显式的加上synchronized这个修饰，子类可以在这个方法中调用父类这个方法，子类这个方法也相当于同步了。</p>
-<p>在接口中的方法不能使用synchronized关键字。</p>
-<p>构造方法不能使用所以synchronized关键字，但可以使用synchronized代码块进行同步</p>
-</li>
-<li><p>修饰一个静态方法，静态方法是属于类而不是对象，所以synchronized修饰的静态方法锁定的是这个类的所有对象。</p>
-</li>
-<li><p>修饰一个类(synchronized(ClassName.class))，与修饰静态方法范围一样，是对该类的所有对象加锁。</p>
-</li>
-</ol>
-</li>
-<li><p>volatile关键字</p>
-<ol>
-<li>保证了不同线程对这个变量进行操作时的可见性，某一线程修改了变量的值，对于其他线程来说是立即可见的</li>
-<li>禁止进行指令重新排序</li>
-<li>能够保证可见性，但不能保证原子性，在一定程度上能保证有序性</li>
-</ol>
-</li>
-<li><p>Lock接口</p>
-<ul>
-<li><p>对于synchronized来说，只有两种情况会释放锁的占有</p>
-<ul>
-<li>获取锁的线程执行完了代码，然后线程自动释放对锁的占有</li>
-<li>线程执行发生异常，此时JVM会让线程自动释放锁</li>
-</ul>
-</li>
-<li><p>当多个线程只是需要读操作时，用synchronized修饰，当一个线程在读操作时，其他线程只能等待而无法进行读操作，会降低效率。</p>
-</li>
-<li><p>使用Lock需要用户手动释放锁，如果没有主动释放锁，就会发生死锁现象。</p>
-</li>
-<li><p>使用Lock必须在try{}catch{}中进行，并且将释放锁的操作放在finally块中进行，保证锁一定会被释放，防止死锁的发生。</p>
-<p><img src="E:%5CSave%5C%E6%96%87%E6%A1%A3%5Cjava%E5%A4%8D%E4%B9%A0%5Cimage%5CSnipaste_2020-02-23_00-54-24.png" alt="Lock的使用"></p>
-</li>
-<li><p>ReentranLock，意思是可重入锁，是唯一实现了Lock接口的类，并且提供了许多的方法。</p>
-</li>
-<li><p>如果锁的对象只是在方法中的局部变量，那么该类的不同对象得到的是不同的锁，将Lock对象声明为类的属性即可。</p>
-</li>
-</ul>
-</li>
-</ol>
-
+<li><p>并发编程的目的是充分利用处理器的每一个核</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
