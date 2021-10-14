@@ -1,435 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>linux screen使用记录</title>
-    <url>/2021/10/10/linux%20screen%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h2 id="screen命令简单记录："><a href="#screen命令简单记录：" class="headerlink" title="screen命令简单记录："></a>screen命令简单记录：</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据不同的发行版本使用不同的安装方式</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install screen</span><br></pre></td></tr></table></figure>
-
-   <a id="more"></a>
-
-<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">screen -S name</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出当前screen"><a href="#退出当前screen" class="headerlink" title="退出当前screen"></a>退出当前screen</h3><p>快捷键：ctrl+a d</p>
-<p>命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">screen -d</span><br></pre></td></tr></table></figure>
-
-<h3 id="回到指定的screen"><a href="#回到指定的screen" class="headerlink" title="回到指定的screen"></a>回到指定的screen</h3><p>查看存在的screen</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
-
-<p>回到screen</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">screen -r name</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除指定的screen"><a href="#删除指定的screen" class="headerlink" title="删除指定的screen"></a>删除指定的screen</h3><p>不在指定的screen中</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">screen -X -S name quit</span><br></pre></td></tr></table></figure>
-
-<p>在指定的screen中</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">screen -X quit</span><br></pre></td></tr></table></figure>
-
-<h3 id="更多命令参数"><a href="#更多命令参数" class="headerlink" title="更多命令参数"></a>更多命令参数</h3><p><a href="https://www.runoob.com/linux/linux-comm-screen.html" target="_blank" rel="noopener">Linux screen命令|菜鸟教程</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>树莓派简单上手</title>
+      <link href="/2021/10/14/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/"/>
+      <url>/2021/10/14/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="树莓派简单上手："><a href="#树莓派简单上手：" class="headerlink" title="树莓派简单上手："></a>树莓派简单上手：</h2><p>记录一些简单的上手操作</p><a id="more"></a><h3 id="系统刷入"><a href="#系统刷入" class="headerlink" title="系统刷入"></a>系统刷入</h3><p>准备镜像文件和刷镜像软件：<a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="noopener">Raspberry Pi</a> + <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">balenaEtcher - Flash OS images to SD cards &amp; USB drives</a></p><p>进入网站，选择喜欢的镜像下载，打开软件balenaEtcher，按照步骤提示一步步操作即可。</p><h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><p>在不连接显示器的情况下，在刚刷完镜像的磁盘根目录下新建一个名为“SSH”的文件，就能默认打开ssh连接</p><p>将tf卡插入树莓派，连接电源，在路由器管理界面找到树莓派的IP地址，使用远程连接软件进行ssh连接即可。</p><p>远程连接软件可以选择Putty，MobaXterm，FinalShell等</p><p>默认用户名：pi，默认密码：raspberry。</p><p>修改pi帐号密码：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd pi</span><br></pre></td></tr></table></figure><p>添加root账号，并切换到root用户</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">su root</span><br></pre></td></tr></table></figure><h3 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h3><p>开启NTP</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo timedatectl set-ntp true</span><br></pre></td></tr></table></figure><p>修改时区</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure><p>用方向键和回车键一次选择Asia，Shanghai即可，使用命令“date”检查当前时间。</p><h3 id="添加国内源"><a href="#添加国内源" class="headerlink" title="添加国内源"></a>添加国内源</h3><p>这里添加清华源作为示例</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编辑“/etc/apt/sources.list”文件</span></span><br><span class="line">nano /etc/apt/sources.list</span><br><span class="line"><span class="meta">#</span><span class="bash">将每一行开头添加“<span class="comment">#”注释原内容</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">添加清华源到文件中</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line"><span class="meta">#</span><span class="bash">依次输入ctrl+x；y；enter；保存并退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash">继续修改文件“/etc/apt/sources.list.d/raspi.list”</span></span><br><span class="line">nano /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="meta">#</span><span class="bash">在每一行开头用“<span class="comment">#”注释，再添加清华源</span></span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</span><br><span class="line"><span class="meta">#</span><span class="bash">保存并退出，更新软件源列表</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure><p>参考链接：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="noopener"> 清华大学开源软件镜像站</a>、<a href="https://www.raspbian.org/FrontPage" target="_blank" rel="noopener">FrontPage - Raspbian</a></p>]]></content>
+      
+      
       <categories>
-        <category>linux</category>
+          
+          <category> raspberrypi </category>
+          
       </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>screen</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java多线程</title>
-    <url>/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<p><strong>多线程</strong></p>
-<ol>
-<li><p>并行与并发的区别</p>
-<ul>
-<li><p>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</p>
-</li>
-<li><p>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</p>
-</li>
-<li><p>并发编程的目的是充分利用处理器的每一个核</p>
-<a id="more"></a>
-</li>
-</ul>
-</li>
-<li><p>线程与进程的区别</p>
-<ul>
-<li>线程是进程的一个实体，是CPU调度和分派的基本单位</li>
-<li>一个程序至少一个进程，一个进程至少一个线程</li>
-</ul>
-</li>
-<li><p>创建线程的几种方式</p>
-<ul>
-<li><p>继承Thread类创建线程类</p>
-<ul>
-<li>Thread类实现了Runnable接口，继承Thread类创建线程，本质上也是实现Runnable接口的一个实例。</li>
-<li>定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体</li>
-<li>创建Thread子类的实例，即创建了线程对象</li>
-<li>调用线程对象的start()方法来启动该线程</li>
-<li>使用继承 Thread 类的方式创建多线程时，编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread() 方法，直接使用 this 即可获得当前线程</li>
-</ul>
-</li>
-<li><p>通过Runnable接口创建线程类</p>
-<ul>
-<li>定义接口的实现类，并重写run()方法，该方法时该线程的线程执行体</li>
-<li>调用线程对象的start()方法来启动该线程</li>
-</ul>
-</li>
-<li><p>通过Callable和Future创建线程</p>
-<ul>
-<li>创建该接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值</li>
-<li>使用FutureTask类来包装Callable对象，FutureTask对象封装了call()方法的返回值，用get()方法来获得子线程执行结束后的返回值。</li>
-</ul>
-<p>start()方法用来启动线程，run()方法只是一个普通方法，</p>
-<p>start()方法启动线程将自动调用 run()方法，这是由jvm的内存机制规定的。并且run()方法必须是public访问权限，返回值类型为void。</p>
-</li>
-</ul>
-</li>
-<li><p>Runnable和Callable有什么区别？</p>
-<p>Runnable接口中run()方法返回值是void，通过start()方法只是执行run()方法中的代码</p>
-<p>Callable接口中的call()方法是有返回值的，是一个泛型，和Future，FutureTask配合可以用来获取异步执行的结果</p>
-</li>
-<li><p>线程有哪些状态？</p>
-<p>五种状态，创建，就绪，运行，阻塞，死亡</p>
-<p>​                        |阻塞|</p>
-<p>创建—-》就绪—-》运行—-》死亡</p>
-</li>
-<li><p>sleep()和wait()有什么区别？</p>
-<ul>
-<li><p>sleep()：该方法是线程类(Thread)的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争CPU的执行时间。</p>
-<p>因为sleep()是静态方法，他不能改变对象锁，当一个synchronized块调用了sleep()方法，线程虽然进入休眠，但是对象锁没有被释放，其他线程依然无法访问这个对象。</p>
-</li>
-<li><p>wait()：wait()方法是Object类的方法，当一个线程执行到wait方法时，它就进入到一个和该对象相关的等待池，同时释放对象锁，是的其他的线程能够访问，可以通过notify，notifyAll方法来唤醒等待的线程</p>
-</li>
-</ul>
-</li>
-<li><p>notify()和notifyAll()</p>
-<ul>
-<li>当有线程调用了对象的notifyAll()方法，将会唤醒所有wait线程，notify()方法只随机唤醒一个wait线程，被唤醒的线程将会进入该对象的锁池，锁池中的线程会去竞争该对象锁。</li>
-<li>假若某线程没有竞争到该对象锁，它还会继续留在锁池中，只有线程再次调用wait()方法，它才会重写回到等待池中，而竞争到对象锁的线程则会继续往下执行，直到执行完synchronized代码块，它会释放掉该对象锁，这是锁池中的线程会继续竞争该对象锁</li>
-</ul>
-</li>
-<li><p>线程池（需要补充）</p>
-<img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png" class="" title="线程池底层原理">
-
-<p>在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p>
-</li>
-<li><p>什么是死锁</p>
-<p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象</p>
-</li>
-<li><p>如何防止死锁</p>
-<p>死锁的四个必要条件</p>
-<ul>
-<li>互斥条件</li>
-<li>请求和保持条件</li>
-<li>不可剥夺条件</li>
-<li>环路等待条件</li>
-</ul>
-</li>
-<li><p>synchronized关键字(悲观锁)</p>
-<ol>
-<li><p>修饰一个代码块，synchronized只锁定对象，对于不同的对象，是不同的锁，互不干扰</p>
-</li>
-<li><p>多个线程访问synchronized代码块和非synchronized代码块，当一个线程访问对象的synchronized代码块时，别的线程可以访问非synchronized代码块</p>
-</li>
-<li><p>修饰一个普通方法，修饰范围是整个方法，当这个方法所在的类被继承时，子类相同的方法synchronized不能被继承，需要显式地在子类加上这个方法才行。</p>
-<p>如果子类继承的方法没有显式的加上synchronized这个修饰，子类可以在这个方法中调用父类这个方法，子类这个方法也相当于同步了。</p>
-<p>在接口中的方法不能使用synchronized关键字。</p>
-<p>构造方法不能使用所以synchronized关键字，但可以使用synchronized代码块进行同步</p>
-</li>
-<li><p>修饰一个静态方法，静态方法是属于类而不是对象，所以synchronized修饰的静态方法锁定的是这个类的所有对象。</p>
-</li>
-<li><p>修饰一个类(synchronized(ClassName.class))，与修饰静态方法范围一样，是对该类的所有对象加锁。</p>
-</li>
-</ol>
-</li>
-<li><p>volatile关键字</p>
-<ol>
-<li>保证了不同线程对这个变量进行操作时的可见性，某一线程修改了变量的值，对于其他线程来说是立即可见的</li>
-<li>禁止进行指令重新排序</li>
-<li>能够保证可见性，但不能保证原子性，在一定程度上能保证有序性</li>
-</ol>
-</li>
-<li><p>Lock接口</p>
-<ul>
-<li><p>对于synchronized来说，只有两种情况会释放锁的占有</p>
-<ul>
-<li>获取锁的线程执行完了代码，然后线程自动释放对锁的占有</li>
-<li>线程执行发生异常，此时JVM会让线程自动释放锁</li>
-</ul>
-</li>
-<li><p>当多个线程只是需要读操作时，用synchronized修饰，当一个线程在读操作时，其他线程只能等待而无法进行读操作，会降低效率。</p>
-</li>
-<li><p>使用Lock需要用户手动释放锁，如果没有主动释放锁，就会发生死锁现象。</p>
-</li>
-<li><p>使用Lock必须在try{}catch{}中进行，并且将释放锁的操作放在finally块中进行，保证锁一定会被释放，防止死锁的发生。</p>
-<img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/2.png" class="" title="Lock的使用">
-</li>
-<li><p>ReentranLock，意思是可重入锁，是唯一实现了Lock接口的类，并且提供了许多的方法。</p>
-</li>
-<li><p>如果锁的对象只是在方法中的局部变量，那么该类的不同对象得到的是不同的锁，将Lock对象声明为类的属性即可。</p>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> raspberrypi </tag>
+            
+            <tag> 树莓派 </tag>
+            
+            <tag> raspberrypi 4b </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git push 登录Github失败解决</title>
+      <link href="/2021/10/11/git%20push%20%E7%99%BB%E5%BD%95Github%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/"/>
+      <url>/2021/10/11/git%20push%20%E7%99%BB%E5%BD%95Github%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="git-push-登录Github失败解决："><a href="#git-push-登录Github失败解决：" class="headerlink" title="git push 登录Github失败解决："></a>git push 登录Github失败解决：</h2><p>在网页上登陆你自己的githup账号,点击右上角头像–&gt; setting –&gt; Developer settings –&gt; Personal access tokens页面</p><p>生成token用来登录，第一次登录填写账号密码，第二次弹窗填写帐号，密码填写token</p>]]></content>
+      
+      
       <categories>
-        <category>Java</category>
+          
+          <category> Git </category>
+          
       </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git push 登录Github失败解决</title>
-    <url>/2021/10/11/git%20push%20%E7%99%BB%E5%BD%95Github%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<h2 id="git-push-登录Github失败解决："><a href="#git-push-登录Github失败解决：" class="headerlink" title="git push 登录Github失败解决："></a>git push 登录Github失败解决：</h2><p>在网页上登陆你自己的githup账号,点击右上角头像–&gt; setting –&gt; Developer settings –&gt; Personal access tokens页面</p>
-<p>生成token用来登录，第一次登录填写账号密码，第二次弹窗填写帐号，密码填写token</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> Github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux screen使用记录</title>
+      <link href="/2021/10/10/linux%20screen%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+      <url>/2021/10/10/linux%20screen%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="screen命令简单记录："><a href="#screen命令简单记录：" class="headerlink" title="screen命令简单记录："></a>screen命令简单记录：</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据不同的发行版本使用不同的安装方式</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install screen</span><br></pre></td></tr></table></figure>   <a id="more"></a><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S name</span><br></pre></td></tr></table></figure><h3 id="退出当前screen"><a href="#退出当前screen" class="headerlink" title="退出当前screen"></a>退出当前screen</h3><p>快捷键：ctrl+a d</p><p>命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -d</span><br></pre></td></tr></table></figure><h3 id="回到指定的screen"><a href="#回到指定的screen" class="headerlink" title="回到指定的screen"></a>回到指定的screen</h3><p>查看存在的screen</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure><p>回到screen</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -r name</span><br></pre></td></tr></table></figure><h3 id="删除指定的screen"><a href="#删除指定的screen" class="headerlink" title="删除指定的screen"></a>删除指定的screen</h3><p>不在指定的screen中</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -X -S name quit</span><br></pre></td></tr></table></figure><p>在指定的screen中</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -X quit</span><br></pre></td></tr></table></figure><h3 id="更多命令参数"><a href="#更多命令参数" class="headerlink" title="更多命令参数"></a>更多命令参数</h3><p><a href="https://www.runoob.com/linux/linux-comm-screen.html" target="_blank" rel="noopener">Linux screen命令|菜鸟教程</a></p>]]></content>
+      
+      
       <categories>
-        <category>Git</category>
+          
+          <category> linux </category>
+          
       </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《图解HTTP》笔记一</title>
-    <url>/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
-    <content><![CDATA[<h2 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h2><h2 id="了解web及网络基础"><a href="#了解web及网络基础" class="headerlink" title="了解web及网络基础"></a>了解web及网络基础</h2><h3 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h3><ol>
-<li>客户端：通过发送请求获取服务器资源的Web浏览器等。   <a id="more"></a></li>
-<li>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</li>
-</ol>
-<h3 id="HTTP的诞生"><a href="#HTTP的诞生" class="headerlink" title="HTTP的诞生"></a>HTTP的诞生</h3><p>三项WWW构建技术：</p>
-<ul>
-<li>把SGML（标准通用标记语言）作为页面的文本标记语言的HTML（超文本标记语言）</li>
-<li>作为文档传递协议的HTTP</li>
-<li>指定文档所在地址的URL（统一资源定位符）</li>
-</ul>
-<h3 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h3><ol>
-<li>通常使用的网络（包括互联网），是在TCP/IP协议族的基础上运作的。HTTP属于它内部的一个子集。</li>
-<li>计算机与网络设备要相互通信，就必须基于相同的方法。不同的硬件、操作系统之 间的通信，就需要一种规则，而这种规则称为协议（protocol）</li>
-<li>TCP/IP不同的说法：<ul>
-<li>是互联网相关联的协议集合起来的总称</li>
-<li>是TCP和IP两种协议</li>
-<li>是在IP协议的通信过程中，使用到的协议族的统称</li>
-</ul>
-</li>
-<li>TCP/IP协议族按层次分别分为四层：<ul>
-<li>应用层：决定了向用户提供应用服务时通信的活动（应用服务：FTP，DNS等，HTTP协议）</li>
-<li>传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。（传输协议：TCP，UDP）</li>
-<li>网络层（网络互连层）：用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</li>
-<li>数据链路层（链路层，网络接口层）：处理连接网络的硬件部分（控制操作系统、硬件的设备驱动、NIC（网络适配器，网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介））。硬件上的范畴均在链路层的作用范围之内</li>
-</ul>
-</li>
-<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg" class="" title="TCP&#x2F;IP通信传输流"></li>
-<li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/2.jpg" class="" title="数据信息封装"></li>
-<li>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这种把数据信息包装起来的做法称为封装（encapsulate）。</li>
-</ol>
-<h3 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h3><ol>
-<li>IP（Internet Protocol）网际协议，按层次分，位于网络层。作用是把各种数据包传送给对方，为了保证确实传送到对方那里，需要满足各类条件，其中两个重要的条件是IP地址和MAC地址（Media Access Control Address）。<ul>
-<li>IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址可以和MAC地址进行配对。IP地址可变换，但MAC地址基本不会更改。</li>
-</ul>
-</li>
-<li>ARP协议（Address Resolution Protocol），是一种用以解析地址的协议，根据通行方的IP地址就可以反查出对应的MAC地址。</li>
-<li>按层次分，TCP位于传输层，提供可靠的字节流服务（Byte Stream Service）。将大块数据分割成以报文段（segment）为单位的数据包进行管理。能够把数据准确地传给对方。<ul>
-<li>TCP协议采用了三次握手（three-way handshaking）策略。握手过程中使用了TCP的标志（flag）——SYN（synchronize）和ACK（acknowledge）。</li>
-<li>三次握手过程：发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。最后，发送端在回传一个带ACK标志的数据包，代表“握手”结束。若握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包。</li>
-<li>除了三次握手，TCP协议还有其他各种手段来保证通信的可靠性。</li>
-</ul>
-</li>
-<li>DNS（Domain Name System）服务是和HTTP协议一样位于应用层的协议。它提供域名到IP地址之间的解析服务。DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</li>
-</ol>
-<h3 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h3><ol>
-<li>URI（Uniform Resource Identifier，统一资源标识符）。由某个协议方案表示的资源的定位标识符。协议方案是指访问资源所使用的协议类型名称。标准的URI协议方案有30种左右。采用HTTP协议时，协议方案就是http。</li>
-<li>URL（Uniform Resource Locator，统一资源定位符），常用的网页地址就是URL。</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> screen </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java多线程</title>
+      <link href="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+      <url>/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p><strong>多线程</strong></p><ol><li><p>并行与并发的区别</p><ul><li><p>并行时两个或以上的事件在同一时刻发生，并发是指两个或以上的时间在同一时间间隔内发生。</p></li><li><p>并行时不同实体的多个事件，并发时同一个实体上的多个事件。</p></li><li><p>并发编程的目的是充分利用处理器的每一个核</p><a id="more"></a></li></ul></li><li><p>线程与进程的区别</p><ul><li>线程是进程的一个实体，是CPU调度和分派的基本单位</li><li>一个程序至少一个进程，一个进程至少一个线程</li></ul></li><li><p>创建线程的几种方式</p><ul><li><p>继承Thread类创建线程类</p><ul><li>Thread类实现了Runnable接口，继承Thread类创建线程，本质上也是实现Runnable接口的一个实例。</li><li>定义Thread类的子类，并重写该类的run方法，该run方法的方法体就代表了线程要完成的任务。因此把run()方法称为执行体</li><li>创建Thread子类的实例，即创建了线程对象</li><li>调用线程对象的start()方法来启动该线程</li><li>使用继承 Thread 类的方式创建多线程时，编写简单，如果需要访问当前线程，则无需使用 Thread.currentThread() 方法，直接使用 this 即可获得当前线程</li></ul></li><li><p>通过Runnable接口创建线程类</p><ul><li>定义接口的实现类，并重写run()方法，该方法时该线程的线程执行体</li><li>调用线程对象的start()方法来启动该线程</li></ul></li><li><p>通过Callable和Future创建线程</p><ul><li>创建该接口的实现类，并实现call()方法，该call()方法将作为线程执行体，并且有返回值</li><li>使用FutureTask类来包装Callable对象，FutureTask对象封装了call()方法的返回值，用get()方法来获得子线程执行结束后的返回值。</li></ul><p>start()方法用来启动线程，run()方法只是一个普通方法，</p><p>start()方法启动线程将自动调用 run()方法，这是由jvm的内存机制规定的。并且run()方法必须是public访问权限，返回值类型为void。</p></li></ul></li><li><p>Runnable和Callable有什么区别？</p><p>Runnable接口中run()方法返回值是void，通过start()方法只是执行run()方法中的代码</p><p>Callable接口中的call()方法是有返回值的，是一个泛型，和Future，FutureTask配合可以用来获取异步执行的结果</p></li><li><p>线程有哪些状态？</p><p>五种状态，创建，就绪，运行，阻塞，死亡</p><p>​                        |阻塞|</p><p>创建—-》就绪—-》运行—-》死亡</p></li><li><p>sleep()和wait()有什么区别？</p><ul><li><p>sleep()：该方法是线程类(Thread)的静态方法，让调用线程进入睡眠状态，让出执行机会给其他线程，等到休眠时间结束后，线程进入就绪状态和其他线程一起竞争CPU的执行时间。</p><p>因为sleep()是静态方法，他不能改变对象锁，当一个synchronized块调用了sleep()方法，线程虽然进入休眠，但是对象锁没有被释放，其他线程依然无法访问这个对象。</p></li><li><p>wait()：wait()方法是Object类的方法，当一个线程执行到wait方法时，它就进入到一个和该对象相关的等待池，同时释放对象锁，是的其他的线程能够访问，可以通过notify，notifyAll方法来唤醒等待的线程</p></li></ul></li><li><p>notify()和notifyAll()</p><ul><li>当有线程调用了对象的notifyAll()方法，将会唤醒所有wait线程，notify()方法只随机唤醒一个wait线程，被唤醒的线程将会进入该对象的锁池，锁池中的线程会去竞争该对象锁。</li><li>假若某线程没有竞争到该对象锁，它还会继续留在锁池中，只有线程再次调用wait()方法，它才会重写回到等待池中，而竞争到对象锁的线程则会继续往下执行，直到执行完synchronized代码块，它会释放掉该对象锁，这是锁池中的线程会继续竞争该对象锁</li></ul></li><li><p>线程池（需要补充）</p><img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png" class="" title="线程池底层原理"><p>在分配任务时，首先查看核心线程池中有没有空余，如果没有，则存入阻塞队列中等待，如果阻塞队列也满了，就到非核心线程池中查看有没有空闲的线程，如果非核心线程池没有空余的线程，就会到拒绝策略中去。</p></li><li><p>什么是死锁</p><p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象</p></li><li><p>如何防止死锁</p><p>死锁的四个必要条件</p><ul><li>互斥条件</li><li>请求和保持条件</li><li>不可剥夺条件</li><li>环路等待条件</li></ul></li><li><p>synchronized关键字(悲观锁)</p><ol><li><p>修饰一个代码块，synchronized只锁定对象，对于不同的对象，是不同的锁，互不干扰</p></li><li><p>多个线程访问synchronized代码块和非synchronized代码块，当一个线程访问对象的synchronized代码块时，别的线程可以访问非synchronized代码块</p></li><li><p>修饰一个普通方法，修饰范围是整个方法，当这个方法所在的类被继承时，子类相同的方法synchronized不能被继承，需要显式地在子类加上这个方法才行。</p><p>如果子类继承的方法没有显式的加上synchronized这个修饰，子类可以在这个方法中调用父类这个方法，子类这个方法也相当于同步了。</p><p>在接口中的方法不能使用synchronized关键字。</p><p>构造方法不能使用所以synchronized关键字，但可以使用synchronized代码块进行同步</p></li><li><p>修饰一个静态方法，静态方法是属于类而不是对象，所以synchronized修饰的静态方法锁定的是这个类的所有对象。</p></li><li><p>修饰一个类(synchronized(ClassName.class))，与修饰静态方法范围一样，是对该类的所有对象加锁。</p></li></ol></li><li><p>volatile关键字</p><ol><li>保证了不同线程对这个变量进行操作时的可见性，某一线程修改了变量的值，对于其他线程来说是立即可见的</li><li>禁止进行指令重新排序</li><li>能够保证可见性，但不能保证原子性，在一定程度上能保证有序性</li></ol></li><li><p>Lock接口</p><ul><li><p>对于synchronized来说，只有两种情况会释放锁的占有</p><ul><li>获取锁的线程执行完了代码，然后线程自动释放对锁的占有</li><li>线程执行发生异常，此时JVM会让线程自动释放锁</li></ul></li><li><p>当多个线程只是需要读操作时，用synchronized修饰，当一个线程在读操作时，其他线程只能等待而无法进行读操作，会降低效率。</p></li><li><p>使用Lock需要用户手动释放锁，如果没有主动释放锁，就会发生死锁现象。</p></li><li><p>使用Lock必须在try{}catch{}中进行，并且将释放锁的操作放在finally块中进行，保证锁一定会被释放，防止死锁的发生。</p><img src="/2020/04/08/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/2.png" class="" title="Lock的使用"></li><li><p>ReentranLock，意思是可重入锁，是唯一实现了Lock接口的类，并且提供了许多的方法。</p></li><li><p>如果锁的对象只是在方法中的局部变量，那么该类的不同对象得到的是不同的锁，将Lock对象声明为类的属性即可。</p></li></ul></li></ol>]]></content>
+      
+      
       <categories>
-        <category>读书笔记</category>
+          
+          <category> Java </category>
+          
       </categories>
-      <tags>
-        <tag>HTTP</tag>
-        <tag>读书笔记</tag>
-        <tag>图解HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Linux上搭建Assetto Corsa服务器</title>
-    <url>/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
-    <content><![CDATA[<p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p>
-<a id="more"></a>
-
-<p>在安装前，请确保有公网IP以及端口的开放</p>
-<p>首先安装SteamCMD来获取AC服务器需要的文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建一个文件夹</span></span><br><span class="line">mkdir steam</span><br><span class="line"><span class="comment">#进入steam文件夹</span></span><br><span class="line"><span class="built_in">cd</span> steam</span><br><span class="line"><span class="comment">#获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="comment">#删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="comment">#如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure>
-
-<p>SteamCMD详情参考官方：<a href="https://developer.valvesoftware.com/wiki/SteamCMD" target="_blank" rel="noopener">VALVE Developer Community</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#登录steam</span></span><br><span class="line">Steam&gt;login &lt;username&gt;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">#登录之后</span></span><br><span class="line">Steam&gt;force_install_dir ./assetto</span><br><span class="line">Steam&gt;app_update 302550</span><br><span class="line">Steam&gt;<span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#进入assetto文件夹</span></span><br><span class="line"><span class="built_in">cd</span> assetto</span><br><span class="line"><span class="comment">#在assetto文件夹中，可以看到acServer二进制文件以及存放配置的文件夹cfg，在这个文件夹下使用下面的命令即可打开服务器</span></span><br><span class="line">./acServer</span><br></pre></td></tr></table></figure>
-
-<p>你可以直接修改在cfg文件夹下的server_cfg.ini文件来配置服务器，也可以在Windows系统中在可视化的界面下配置完成后导出配置文件，覆盖服务器下的文件</p>
-<p>在Windows下进入..\steam\steamapps\common\assettocorsa\server，运行acServerManager.exe</p>
-<p>在界面下方选择Export即可导出两个配置文件。</p>
-<p>在acServerManager.exe，Settings选项中，勾选Show on Lobby才能在游戏服务器列表中看到（非局域网），这也是需要公网IP以及开放端口的原因。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 多线程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《图解HTTP》笔记一</title>
+      <link href="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/"/>
+      <url>/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/</url>
+      
+        <content type="html"><![CDATA[<h2 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h2><h2 id="了解web及网络基础"><a href="#了解web及网络基础" class="headerlink" title="了解web及网络基础"></a>了解web及网络基础</h2><h3 id="使用HTTP协议访问Web"><a href="#使用HTTP协议访问Web" class="headerlink" title="使用HTTP协议访问Web"></a>使用HTTP协议访问Web</h3><ol><li>客户端：通过发送请求获取服务器资源的Web浏览器等。   <a id="more"></a></li><li>Web 使用一种名为 HTTP（HyperText Transfer Protocol，超文本传输协议 [超文本转移协议]）的协议作为规范，完成从客户端到服务器端等一系列运作流 程。而协议是指规则的约定。可以说，Web 是建立在 HTTP 协议上通信的。</li></ol><h3 id="HTTP的诞生"><a href="#HTTP的诞生" class="headerlink" title="HTTP的诞生"></a>HTTP的诞生</h3><p>三项WWW构建技术：</p><ul><li>把SGML（标准通用标记语言）作为页面的文本标记语言的HTML（超文本标记语言）</li><li>作为文档传递协议的HTTP</li><li>指定文档所在地址的URL（统一资源定位符）</li></ul><h3 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h3><ol><li>通常使用的网络（包括互联网），是在TCP/IP协议族的基础上运作的。HTTP属于它内部的一个子集。</li><li>计算机与网络设备要相互通信，就必须基于相同的方法。不同的硬件、操作系统之 间的通信，就需要一种规则，而这种规则称为协议（protocol）</li><li>TCP/IP不同的说法：<ul><li>是互联网相关联的协议集合起来的总称</li><li>是TCP和IP两种协议</li><li>是在IP协议的通信过程中，使用到的协议族的统称</li></ul></li><li>TCP/IP协议族按层次分别分为四层：<ul><li>应用层：决定了向用户提供应用服务时通信的活动（应用服务：FTP，DNS等，HTTP协议）</li><li>传输层：传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。（传输协议：TCP，UDP）</li><li>网络层（网络互连层）：用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</li><li>数据链路层（链路层，网络接口层）：处理连接网络的硬件部分（控制操作系统、硬件的设备驱动、NIC（网络适配器，网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介））。硬件上的范畴均在链路层的作用范围之内</li></ul></li><li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/1.jpg" class="" title="TCP&#x2F;IP通信传输流"></li><li><img src="/2020/04/08/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0%E4%B8%80/2.jpg" class="" title="数据信息封装"></li><li>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层时会把对应的首部消去。这种把数据信息包装起来的做法称为封装（encapsulate）。</li></ol><h3 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h3><ol><li>IP（Internet Protocol）网际协议，按层次分，位于网络层。作用是把各种数据包传送给对方，为了保证确实传送到对方那里，需要满足各类条件，其中两个重要的条件是IP地址和MAC地址（Media Access Control Address）。<ul><li>IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址可以和MAC地址进行配对。IP地址可变换，但MAC地址基本不会更改。</li></ul></li><li>ARP协议（Address Resolution Protocol），是一种用以解析地址的协议，根据通行方的IP地址就可以反查出对应的MAC地址。</li><li>按层次分，TCP位于传输层，提供可靠的字节流服务（Byte Stream Service）。将大块数据分割成以报文段（segment）为单位的数据包进行管理。能够把数据准确地传给对方。<ul><li>TCP协议采用了三次握手（three-way handshaking）策略。握手过程中使用了TCP的标志（flag）——SYN（synchronize）和ACK（acknowledge）。</li><li>三次握手过程：发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。最后，发送端在回传一个带ACK标志的数据包，代表“握手”结束。若握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包。</li><li>除了三次握手，TCP协议还有其他各种手段来保证通信的可靠性。</li></ul></li><li>DNS（Domain Name System）服务是和HTTP协议一样位于应用层的协议。它提供域名到IP地址之间的解析服务。DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</li></ol><h3 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h3><ol><li>URI（Uniform Resource Identifier，统一资源标识符）。由某个协议方案表示的资源的定位标识符。协议方案是指访问资源所使用的协议类型名称。标准的URI协议方案有30种左右。采用HTTP协议时，协议方案就是http。</li><li>URL（Uniform Resource Locator，统一资源定位符），常用的网页地址就是URL。</li></ol>]]></content>
+      
+      
       <categories>
-        <category>Game</category>
+          
+          <category> 读书笔记 </category>
+          
       </categories>
-      <tags>
-        <tag>assetto corsa</tag>
-        <tag>神力科莎</tag>
-        <tag>服务器</tag>
-        <tag>acServerManager</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将hexo部署到腾讯COS</title>
-    <url>/2020/04/06/%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AFCOS/</url>
-    <content><![CDATA[<p>部署到腾讯COS，相比GitHub Pages，国内大陆访问速度会更快，也可以选择两端都部署。将hexo部署到腾讯COS，需要用到插件<a href="https://github.com/sdlzhd/hexo-deployer-cos" target="_blank" rel="noopener">hexo-deployer-cos</a>，可以快速完成部署。在进行下面的操作前，需要在本地部署好hexo环境，参考<a href="http://icecakes.github.io/2020/04/04/利用Hexo搭建个人博客/">利用Hexo搭建个人博客</a>。</p>
-<a id="more"></a>
-
-<h2 id="配置腾讯COS"><a href="#配置腾讯COS" class="headerlink" title="配置腾讯COS"></a>配置腾讯COS</h2><p>进入<a href="https://cloud.tencent.com/" target="_blank" rel="noopener">腾讯云</a>，使用QQ或者微信进行登录，然后进行实名认证即可。</p>
-<p>在腾讯云官网，点击右上角的控制台进入控制台界面。在云产品中，点击对象存储。在左侧菜单中选择存储桶列表，新建一个存储桶，用做存储静态网站的地方。</p>
-<p>填写存储桶信息，名称随意，在选择所属地域时，选择靠近的地方就行，访问权限选择“公有读私有写”，其他默认，点击确定。</p>
-<p>对刚刚创建的存储桶进行配置管理，点击“基础配置”，找到“静态网站”，开启静态网站。静态网站设置的详细信息可以参考官方：<a href="https://cloud.tencent.com/document/product/436/14984" target="_blank" rel="noopener">设置静态网站</a>。</p>
-<h2 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h2><p>首先安装插件，使用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install hexo-deployer-cos --save</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，可以在hexo根目录中，查看“package.json”文件检测安装是否成功。如果在依赖中找到了”hexo-deployer-cos”，说明安装成功。</p>
-<p>在hexo根目录下，打开“_config.yml”配置文件，找到deploy，更改为如下配置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">'cos'</span> <span class="comment"># 保持不变</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="number">123456</span> </span><br><span class="line">  <span class="attr">secretId:</span> <span class="string">*********************************</span></span><br><span class="line">  <span class="attr">secretKey:</span> <span class="string">********************************</span></span><br><span class="line">  <span class="attr">bucket:</span> <span class="string">ABC-123456</span></span><br><span class="line">  <span class="attr">region:</span> <span class="string">ap-ABC</span></span><br></pre></td></tr></table></figure>
-
-<p>其中appId，secreId，secretKey信息，在腾讯云控制台最左边菜单中，找到密钥管理，根据提示进入，如果没有密钥，则新建一个密钥，然后就能找到这些信息。</p>
-<p>bucket中，填写存储桶名称，由自定义名称和appId组成，如：apple-123456。region即选择的所属地域，如：ap-guangzhou。</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>在配置完成后，使用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-
-<p>然后部署就完成了，访问节点在“基础配置”-“静态网站”中可以找到，如果觉得默认域名太长，也可以在“域名管理”中，添加自定义域名。</p>
-<h2 id="补充：在腾讯COS与GitHub同时部署更新"><a href="#补充：在腾讯COS与GitHub同时部署更新" class="headerlink" title="补充：在腾讯COS与GitHub同时部署更新"></a>补充：在腾讯COS与GitHub同时部署更新</h2><p>在Hexo根目录中，打开“_config.yml”配置文件，找到deploy，配置示例如下</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">'git'</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">https://github.com/***/***.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">'cos'</span></span><br><span class="line">    <span class="attr">appId:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">secretId:</span> <span class="string">*********************************</span></span><br><span class="line">    <span class="attr">secretKey:</span> <span class="string">*********************************</span></span><br><span class="line">    <span class="attr">bucket:</span> <span class="string">ABC-123456</span></span><br><span class="line">    <span class="attr">region:</span> <span class="string">ap-ABC</span></span><br></pre></td></tr></table></figure>
-
-<p>然后执行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> HTTP </tag>
+            
+            <tag> 读书笔记 </tag>
+            
+            <tag> 图解HTTP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>将hexo部署到腾讯COS</title>
+      <link href="/2020/04/06/%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AFCOS/"/>
+      <url>/2020/04/06/%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AFCOS/</url>
+      
+        <content type="html"><![CDATA[<p>部署到腾讯COS，相比GitHub Pages，国内大陆访问速度会更快，也可以选择两端都部署。将hexo部署到腾讯COS，需要用到插件<a href="https://github.com/sdlzhd/hexo-deployer-cos" target="_blank" rel="noopener">hexo-deployer-cos</a>，可以快速完成部署。在进行下面的操作前，需要在本地部署好hexo环境，参考<a href="http://icecakes.github.io/2020/04/04/利用Hexo搭建个人博客/">利用Hexo搭建个人博客</a>。</p><a id="more"></a><h2 id="配置腾讯COS"><a href="#配置腾讯COS" class="headerlink" title="配置腾讯COS"></a>配置腾讯COS</h2><p>进入<a href="https://cloud.tencent.com/" target="_blank" rel="noopener">腾讯云</a>，使用QQ或者微信进行登录，然后进行实名认证即可。</p><p>在腾讯云官网，点击右上角的控制台进入控制台界面。在云产品中，点击对象存储。在左侧菜单中选择存储桶列表，新建一个存储桶，用做存储静态网站的地方。</p><p>填写存储桶信息，名称随意，在选择所属地域时，选择靠近的地方就行，访问权限选择“公有读私有写”，其他默认，点击确定。</p><p>对刚刚创建的存储桶进行配置管理，点击“基础配置”，找到“静态网站”，开启静态网站。静态网站设置的详细信息可以参考官方：<a href="https://cloud.tencent.com/document/product/436/14984" target="_blank" rel="noopener">设置静态网站</a>。</p><h2 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h2><p>首先安装插件，使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-deployer-cos --save</span><br></pre></td></tr></table></figure><p>安装完成后，可以在hexo根目录中，查看“package.json”文件检测安装是否成功。如果在依赖中找到了”hexo-deployer-cos”，说明安装成功。</p><p>在hexo根目录下，打开“_config.yml”配置文件，找到deploy，更改为如下配置</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">'cos'</span> <span class="comment"># 保持不变</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="number">123456</span> </span><br><span class="line">  <span class="attr">secretId:</span> <span class="string">*********************************</span></span><br><span class="line">  <span class="attr">secretKey:</span> <span class="string">********************************</span></span><br><span class="line">  <span class="attr">bucket:</span> <span class="string">ABC-123456</span></span><br><span class="line">  <span class="attr">region:</span> <span class="string">ap-ABC</span></span><br></pre></td></tr></table></figure><p>其中appId，secreId，secretKey信息，在腾讯云控制台最左边菜单中，找到密钥管理，根据提示进入，如果没有密钥，则新建一个密钥，然后就能找到这些信息。</p><p>bucket中，填写存储桶名称，由自定义名称和appId组成，如：apple-123456。region即选择的所属地域，如：ap-guangzhou。</p><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>在配置完成后，使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><p>然后部署就完成了，访问节点在“基础配置”-“静态网站”中可以找到，如果觉得默认域名太长，也可以在“域名管理”中，添加自定义域名。</p><h2 id="补充：在腾讯COS与GitHub同时部署更新"><a href="#补充：在腾讯COS与GitHub同时部署更新" class="headerlink" title="补充：在腾讯COS与GitHub同时部署更新"></a>补充：在腾讯COS与GitHub同时部署更新</h2><p>在Hexo根目录中，打开“_config.yml”配置文件，找到deploy，配置示例如下</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">'git'</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">https://github.com/***/***.github.io.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">'cos'</span></span><br><span class="line">    <span class="attr">appId:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">secretId:</span> <span class="string">*********************************</span></span><br><span class="line">    <span class="attr">secretKey:</span> <span class="string">*********************************</span></span><br><span class="line">    <span class="attr">bucket:</span> <span class="string">ABC-123456</span></span><br><span class="line">    <span class="attr">region:</span> <span class="string">ap-ABC</span></span><br></pre></td></tr></table></figure><p>然后执行命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>腾讯COS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用Hexo搭建个人博客 入门</title>
-    <url>/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>​        Hexo安装详情，推荐查看Hexo中文网站：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>，本文大部分内容都参考自Hexo中文网站。安装过程的系统环境为Windows10。请在安装前，准备好Git环境，Git安装参考：<a href="https://www.runoob.com/git/git-install-setup.html" target="_blank" rel="noopener">菜鸟教程 Git安装配置</a>。安装过程中，输入命令的操作都是在Git Bash中进行。</p>
-<a id="more"></a>
-
-<h2 id="安装Hexo前准备"><a href="#安装Hexo前准备" class="headerlink" title="安装Hexo前准备"></a>安装Hexo前准备</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><ol>
-<li>首先需要下载node.js，这里使用官网下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">nodejs</a>，也可以访问<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>。</li>
-<li>在下载了msi文件之后，双击进行安装操作。</li>
-<li>安装完成后，使用命令：node -v，查看当前Node.js版本，使用命令：npm -v，查看npm版本，也是为了检测Node.js是否安装成功。</li>
-</ol>
-<h3 id="使用npm安装cnpm"><a href="#使用npm安装cnpm" class="headerlink" title="使用npm安装cnpm"></a>使用npm安装cnpm</h3><ol>
-<li><p>由于在一些情况下使用npm下载速度有限，所以本次安装将使用淘宝cnpm下载npm仓库中的包。</p>
-</li>
-<li><p>使用命令安装cnpm。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install cnpm -g --registry=https://r.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li>安装详情可以参考：<a href="https://npm.taobao.org/package/cnpm" target="_blank" rel="noopener">TAONPM</a>。</li>
-</ol>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ol>
-<li><p>首先需要确定安装博客的位置，也是安装Hexo框架的位置，新建一个文件夹，将Hexo和以后的网页都放在这个文件夹中。</p>
-</li>
-<li><p>在命令行中进入这个文件夹，使用安装命令安装Hexo客户端</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="写第一个博客"><a href="#写第一个博客" class="headerlink" title="写第一个博客"></a>写第一个博客</h3><ol>
-<li><p>首先进入之前创建的空文件夹中。</p>
-</li>
-<li><p>使用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
-
-<p>你也可以在init后面加上[文件夹名称]，它会在之前创建的空文件夹中再创建一个文件夹，将初始化的文件放到新创建的文件夹中，本次初始化没有添加init后面的参数。</p>
-</li>
-<li><p>初始化需要从GitHub上克隆文件到本地，由于网络原因，可能需要一段时间的等待。</p>
-</li>
-<li><p>在初始化完成之后，你可以在文件夹中看到一些初始化后得到的文件，使用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g <span class="comment">#生成博客网站</span></span><br><span class="line">$ hexo s <span class="comment">#运行博客</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行成功之后，根据提示，在浏览器中访问默认地址：<a href="http://localhost:4000/" target="_blank" rel="noopener">Hexo</a>，你将看到搭建成功的页面。</p>
-</li>
-<li><p>使用‘Ctrl’+‘c’停止服务器。</p>
-</li>
-<li><p>在./source/_posts目录中，你可以看到默认的博客”hello-world.md”文件，你可以在当前路径下新建一个md文件，作为你的第一个博客，然后使用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean <span class="comment">#清理缓存文件和生成的静态文件（db.jsonh和public）</span></span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-
-<p>同样访问本地默认地址，查看博客界面。</p>
-</li>
-<li><p>也可以使用命令来创建你的博客</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"my first blog"</span></span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-
-<p>更多命令详情可以查看Hexo中文网站。</p>
-</li>
-</ol>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 腾讯COS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>利用Hexo搭建个人博客 入门</title>
+      <link href="/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2020/04/04/%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<p>​        Hexo安装详情，推荐查看Hexo中文网站：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>，本文大部分内容都参考自Hexo中文网站。安装过程的系统环境为Windows10。请在安装前，准备好Git环境，Git安装参考：<a href="https://www.runoob.com/git/git-install-setup.html" target="_blank" rel="noopener">菜鸟教程 Git安装配置</a>。安装过程中，输入命令的操作都是在Git Bash中进行。</p><a id="more"></a><h2 id="安装Hexo前准备"><a href="#安装Hexo前准备" class="headerlink" title="安装Hexo前准备"></a>安装Hexo前准备</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><ol><li>首先需要下载node.js，这里使用官网下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">nodejs</a>，也可以访问<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>。</li><li>在下载了msi文件之后，双击进行安装操作。</li><li>安装完成后，使用命令：node -v，查看当前Node.js版本，使用命令：npm -v，查看npm版本，也是为了检测Node.js是否安装成功。</li></ol><h3 id="使用npm安装cnpm"><a href="#使用npm安装cnpm" class="headerlink" title="使用npm安装cnpm"></a>使用npm安装cnpm</h3><ol><li><p>由于在一些情况下使用npm下载速度有限，所以本次安装将使用淘宝cnpm下载npm仓库中的包。</p></li><li><p>使用命令安装cnpm。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install cnpm -g --registry=https://r.npm.taobao.org</span><br></pre></td></tr></table></figure></li></ol><ol start="3"><li>安装详情可以参考：<a href="https://npm.taobao.org/package/cnpm" target="_blank" rel="noopener">TAONPM</a>。</li></ol><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ol><li><p>首先需要确定安装博客的位置，也是安装Hexo框架的位置，新建一个文件夹，将Hexo和以后的网页都放在这个文件夹中。</p></li><li><p>在命令行中进入这个文件夹，使用安装命令安装Hexo客户端</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure></li></ol><h3 id="写第一个博客"><a href="#写第一个博客" class="headerlink" title="写第一个博客"></a>写第一个博客</h3><ol><li><p>首先进入之前创建的空文件夹中。</p></li><li><p>使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure><p>你也可以在init后面加上[文件夹名称]，它会在之前创建的空文件夹中再创建一个文件夹，将初始化的文件放到新创建的文件夹中，本次初始化没有添加init后面的参数。</p></li><li><p>初始化需要从GitHub上克隆文件到本地，由于网络原因，可能需要一段时间的等待。</p></li><li><p>在初始化完成之后，你可以在文件夹中看到一些初始化后得到的文件，使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g <span class="comment">#生成博客网站</span></span><br><span class="line">$ hexo s <span class="comment">#运行博客</span></span><br></pre></td></tr></table></figure></li><li><p>运行成功之后，根据提示，在浏览器中访问默认地址：<a href="http://localhost:4000/" target="_blank" rel="noopener">Hexo</a>，你将看到搭建成功的页面。</p></li><li><p>使用‘Ctrl’+‘c’停止服务器。</p></li><li><p>在./source/_posts目录中，你可以看到默认的博客”hello-world.md”文件，你可以在当前路径下新建一个md文件，作为你的第一个博客，然后使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="comment">#清理缓存文件和生成的静态文件（db.jsonh和public）</span></span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure><p>同样访问本地默认地址，查看博客界面。</p></li><li><p>也可以使用命令来创建你的博客</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"my first blog"</span></span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure><p>更多命令详情可以查看Hexo中文网站。</p></li></ol>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>树莓派简单上手</title>
-    <url>/2021/10/14/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/</url>
-    <content><![CDATA[<h2 id="树莓派简单上手："><a href="#树莓派简单上手：" class="headerlink" title="树莓派简单上手："></a>树莓派简单上手：</h2><p>记录一些简单的上手操作</p>
-<a id="more"></a>
-
-<h3 id="系统刷入"><a href="#系统刷入" class="headerlink" title="系统刷入"></a>系统刷入</h3><p>准备镜像文件和刷镜像软件：<a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="noopener">Raspberry Pi</a> + <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">balenaEtcher - Flash OS images to SD cards &amp; USB drives</a></p>
-<p>进入网站，选择喜欢的镜像下载，打开软件balenaEtcher，按照步骤提示一步步操作即可。</p>
-<h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><p>在不连接显示器的情况下，在刚刷完镜像的磁盘根目录下新建一个名为“SSH”的文件，就能默认打开ssh连接</p>
-<p>将tf卡插入树莓派，连接电源，在路由器管理界面找到树莓派的IP地址，使用远程连接软件进行ssh连接即可。</p>
-<p>远程连接软件可以选择Putty，MobaXterm，FinalShell等</p>
-<p>默认用户名：pi，默认密码：raspberry。</p>
-<p>修改pi帐号密码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd pi</span><br></pre></td></tr></table></figure>
-
-<p>添加root账号，并切换到root用户</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">su root</span><br></pre></td></tr></table></figure>
-
-<h3 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h3><p>开启NTP</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo timedatectl set-ntp true</span><br></pre></td></tr></table></figure>
-<p>修改时区</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure>
-<p>用方向键和回车键一次选择Asia，Shanghai即可，使用命令“date”检查当前时间。</p>
-<h3 id="添加国内源"><a href="#添加国内源" class="headerlink" title="添加国内源"></a>添加国内源</h3><p>这里添加清华源作为示例</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编辑“/etc/apt/sources.list”文件</span></span><br><span class="line">nano /etc/apt/sources.list</span><br><span class="line"><span class="meta">#</span><span class="bash">将每一行开头添加“<span class="comment">#”注释原内容</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">添加清华源到文件中</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line"><span class="meta">#</span><span class="bash">依次输入ctrl+x；y；enter；保存并退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash">继续修改文件“/etc/apt/sources.list.d/raspi.list”</span></span><br><span class="line">nano /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="meta">#</span><span class="bash">在每一行开头用“<span class="comment">#”注释，再添加清华源</span></span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</span><br><span class="line"><span class="meta">#</span><span class="bash">保存并退出，更新软件源列表</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<p>参考链接：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="noopener"> 清华大学开源软件镜像站</a>、<a href="https://www.raspbian.org/FrontPage" target="_blank" rel="noopener">FrontPage - Raspbian</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>在Linux上搭建Assetto Corsa服务器</title>
+      <link href="/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>/2020/04/04/%E5%9C%A8Linux%E4%B8%8A%E6%90%AD%E5%BB%BAAssetto%20Corsa%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>本文中将AC服务器搭建在阿里云服务器上，系统为CentOS7</p><a id="more"></a><p>在安装前，请确保有公网IP以及端口的开放</p><p>首先安装SteamCMD来获取AC服务器需要的文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个文件夹</span></span><br><span class="line">mkdir steam</span><br><span class="line"><span class="comment">#进入steam文件夹</span></span><br><span class="line"><span class="built_in">cd</span> steam</span><br><span class="line"><span class="comment">#获取SteamCMD压缩包并解压</span></span><br><span class="line">wget http//media.steampowered.com/client/steamcmd_linux.tar.gz</span><br><span class="line">tar -xvf steamcmd_linux.tar.gz</span><br><span class="line"><span class="comment">#删除原压缩包，启动SteamCMD以WINDOWS模式打开</span></span><br><span class="line">rm steamcmd_linux.tar.gz</span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows</span><br><span class="line"><span class="comment">#如果你的系统是64位，可以使用下面的命令将环境转换成64位</span></span><br><span class="line">./steamcmd.sh +@sSteamCmdForcePlatformType windows +@sSteamCmdForcePlatformBitness 64</span><br></pre></td></tr></table></figure><p>SteamCMD详情参考官方：<a href="https://developer.valvesoftware.com/wiki/SteamCMD" target="_blank" rel="noopener">VALVE Developer Community</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#登录steam</span></span><br><span class="line">Steam&gt;login &lt;username&gt;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"><span class="comment">#登录之后</span></span><br><span class="line">Steam&gt;force_install_dir ./assetto</span><br><span class="line">Steam&gt;app_update 302550</span><br><span class="line">Steam&gt;<span class="built_in">exit</span></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入assetto文件夹</span></span><br><span class="line"><span class="built_in">cd</span> assetto</span><br><span class="line"><span class="comment">#在assetto文件夹中，可以看到acServer二进制文件以及存放配置的文件夹cfg，在这个文件夹下使用下面的命令即可打开服务器</span></span><br><span class="line">./acServer</span><br></pre></td></tr></table></figure><p>你可以直接修改在cfg文件夹下的server_cfg.ini文件来配置服务器，也可以在Windows系统中在可视化的界面下配置完成后导出配置文件，覆盖服务器下的文件</p><p>在Windows下进入..\steam\steamapps\common\assettocorsa\server，运行acServerManager.exe</p><p>在界面下方选择Export即可导出两个配置文件。</p><p>在acServerManager.exe，Settings选项中，勾选Show on Lobby才能在游戏服务器列表中看到（非局域网），这也是需要公网IP以及开放端口的原因。</p>]]></content>
+      
+      
       <categories>
-        <category>raspberrypi</category>
+          
+          <category> Game </category>
+          
       </categories>
-      <tags>
-        <tag>raspberrypi</tag>
-        <tag>树莓派</tag>
-        <tag>raspberrypi 4b</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> assetto corsa </tag>
+            
+            <tag> 神力科莎 </tag>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> acServerManager </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
