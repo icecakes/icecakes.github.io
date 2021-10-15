@@ -146,6 +146,20 @@
       </tags>
   </entry>
   <entry>
+    <title>git push 登录Github失败解决</title>
+    <url>/2021/10/11/git%20push%20%E7%99%BB%E5%BD%95Github%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<h2 id="git-push-登录Github失败解决："><a href="#git-push-登录Github失败解决：" class="headerlink" title="git push 登录Github失败解决："></a>git push 登录Github失败解决：</h2><p>在网页上登陆你自己的githup账号,点击右上角头像–&gt; setting –&gt; Developer settings –&gt; Personal access tokens页面</p>
+<p>生成token用来登录，第一次登录填写账号密码，第二次弹窗填写帐号，密码填写token</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux screen使用记录</title>
     <url>/2021/10/10/linux%20screen%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h2 id="screen命令简单记录："><a href="#screen命令简单记录：" class="headerlink" title="screen命令简单记录："></a>screen命令简单记录：</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>根据不同的发行版本使用不同的安装方式</p>
@@ -240,20 +254,6 @@
         <tag>HTTP</tag>
         <tag>读书笔记</tag>
         <tag>图解HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git push 登录Github失败解决</title>
-    <url>/2021/10/11/git%20push%20%E7%99%BB%E5%BD%95Github%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<h2 id="git-push-登录Github失败解决："><a href="#git-push-登录Github失败解决：" class="headerlink" title="git push 登录Github失败解决："></a>git push 登录Github失败解决：</h2><p>在网页上登陆你自己的githup账号,点击右上角头像–&gt; setting –&gt; Developer settings –&gt; Personal access tokens页面</p>
-<p>生成token用来登录，第一次登录填写账号密码，第二次弹窗填写帐号，密码填写token</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -358,6 +358,43 @@
       </tags>
   </entry>
   <entry>
+    <title>树莓派简单上手</title>
+    <url>/2021/10/14/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/</url>
+    <content><![CDATA[<h2 id="树莓派简单上手："><a href="#树莓派简单上手：" class="headerlink" title="树莓派简单上手："></a>树莓派简单上手：</h2><p>记录一些简单的上手操作</p>
+<a id="more"></a>
+
+<h3 id="系统刷入"><a href="#系统刷入" class="headerlink" title="系统刷入"></a>系统刷入</h3><p>准备镜像文件和刷镜像软件：<a href="https://downloads.raspberrypi.org/" target="_blank" rel="noopener">Raspberry Pi</a> + <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">balenaEtcher - Flash OS images to SD cards &amp; USB drives</a></p>
+<p>进入网站，选择喜欢的镜像下载，打开软件balenaEtcher，按照步骤提示一步步操作即可。</p>
+<h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><p>在不连接显示器的情况下，在刚刷完镜像的磁盘根目录下新建一个名为“SSH”的文件，就能默认打开ssh连接</p>
+<p>将tf卡插入树莓派，连接电源，在路由器管理界面找到树莓派的IP地址，使用远程连接软件进行ssh连接即可。</p>
+<p>远程连接软件可以选择Putty，MobaXterm，FinalShell等</p>
+<p>默认用户名：pi，默认密码：raspberry。</p>
+<p>修改pi帐号密码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd pi</span><br></pre></td></tr></table></figure>
+
+<p>添加root账号，并切换到root用户</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h3><p>开启NTP</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo timedatectl set-ntp true</span><br></pre></td></tr></table></figure>
+<p>修改时区</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure>
+<p>用方向键和回车键一次选择Asia，Shanghai即可，使用命令“date”检查当前时间。</p>
+<h3 id="添加国内源"><a href="#添加国内源" class="headerlink" title="添加国内源"></a>添加国内源</h3><p>这里添加清华源作为示例</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编辑“/etc/apt/sources.list”文件</span></span><br><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"><span class="meta">#</span><span class="bash">将每一行开头添加“<span class="comment">#”注释原内容</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">添加清华源到文件中</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line"><span class="meta">#</span><span class="bash">依次输入ctrl+x；y；enter；保存并退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash">继续修改文件“/etc/apt/sources.list.d/raspi.list”</span></span><br><span class="line">sudo nano /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="meta">#</span><span class="bash">在每一行开头用“<span class="comment">#”注释，再添加清华源</span></span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</span><br><span class="line"><span class="meta">#</span><span class="bash">保存并退出，更新软件源列表</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="noopener"> 清华大学开源软件镜像站</a>、<a href="https://www.raspbian.org/FrontPage" target="_blank" rel="noopener">FrontPage - Raspbian</a></p>
+]]></content>
+      <categories>
+        <category>raspberrypi</category>
+      </categories>
+      <tags>
+        <tag>raspberrypi</tag>
+        <tag>树莓派</tag>
+        <tag>raspberrypi 4b</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>将hexo部署到腾讯COS</title>
     <url>/2020/04/06/%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AFCOS/</url>
     <content><![CDATA[<p>部署到腾讯COS，相比GitHub Pages，国内大陆访问速度会更快，也可以选择两端都部署。将hexo部署到腾讯COS，需要用到插件<a href="https://github.com/sdlzhd/hexo-deployer-cos" target="_blank" rel="noopener">hexo-deployer-cos</a>，可以快速完成部署。在进行下面的操作前，需要在本地部署好hexo环境，参考<a href="http://icecakes.github.io/2020/04/04/利用Hexo搭建个人博客/">利用Hexo搭建个人博客</a>。</p>
@@ -393,43 +430,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>腾讯COS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>树莓派简单上手</title>
-    <url>/2021/10/14/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B/</url>
-    <content><![CDATA[<h2 id="树莓派简单上手："><a href="#树莓派简单上手：" class="headerlink" title="树莓派简单上手："></a>树莓派简单上手：</h2><p>记录一些简单的上手操作</p>
-<a id="more"></a>
-
-<h3 id="系统刷入"><a href="#系统刷入" class="headerlink" title="系统刷入"></a>系统刷入</h3><p>准备镜像文件和刷镜像软件：<a href="https://downloads.raspberrypi.org/" target="_blank" rel="noopener">Raspberry Pi</a> + <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">balenaEtcher - Flash OS images to SD cards &amp; USB drives</a></p>
-<p>进入网站，选择喜欢的镜像下载，打开软件balenaEtcher，按照步骤提示一步步操作即可。</p>
-<h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><p>在不连接显示器的情况下，在刚刷完镜像的磁盘根目录下新建一个名为“SSH”的文件，就能默认打开ssh连接</p>
-<p>将tf卡插入树莓派，连接电源，在路由器管理界面找到树莓派的IP地址，使用远程连接软件进行ssh连接即可。</p>
-<p>远程连接软件可以选择Putty，MobaXterm，FinalShell等</p>
-<p>默认用户名：pi，默认密码：raspberry。</p>
-<p>修改pi帐号密码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd pi</span><br></pre></td></tr></table></figure>
-
-<p>添加root账号，并切换到root用户</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">su root</span><br></pre></td></tr></table></figure>
-
-<h3 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h3><p>开启NTP</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo timedatectl set-ntp true</span><br></pre></td></tr></table></figure>
-<p>修改时区</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure>
-<p>用方向键和回车键一次选择Asia，Shanghai即可，使用命令“date”检查当前时间。</p>
-<h3 id="添加国内源"><a href="#添加国内源" class="headerlink" title="添加国内源"></a>添加国内源</h3><p>这里添加清华源作为示例</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编辑“/etc/apt/sources.list”文件</span></span><br><span class="line">nano /etc/apt/sources.list</span><br><span class="line"><span class="meta">#</span><span class="bash">将每一行开头添加“<span class="comment">#”注释原内容</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">添加清华源到文件中</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi</span><br><span class="line"><span class="meta">#</span><span class="bash">依次输入ctrl+x；y；enter；保存并退出</span></span><br><span class="line"><span class="meta">#</span><span class="bash">继续修改文件“/etc/apt/sources.list.d/raspi.list”</span></span><br><span class="line">nano /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="meta">#</span><span class="bash">在每一行开头用“<span class="comment">#”注释，再添加清华源</span></span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</span><br><span class="line"><span class="meta">#</span><span class="bash">保存并退出，更新软件源列表</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<p>参考链接：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="noopener"> 清华大学开源软件镜像站</a>、<a href="https://www.raspbian.org/FrontPage" target="_blank" rel="noopener">FrontPage - Raspbian</a></p>
-]]></content>
-      <categories>
-        <category>raspberrypi</category>
-      </categories>
-      <tags>
-        <tag>raspberrypi</tag>
-        <tag>树莓派</tag>
-        <tag>raspberrypi 4b</tag>
       </tags>
   </entry>
 </search>
